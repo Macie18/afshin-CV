@@ -24,6 +24,29 @@
       </div>`;
   }
 
+  /* Gallery 单项：图片 / 视频 / PDF 卡片 */
+  function galleryItem(it, i) {
+    const d = `reveal reveal-d${(i % 4) + 1}`;
+    if (it.type === "video") {
+      return `
+        <figure class="g-item g-video ${d}" data-idx="${i}">
+          <video src="${esc(it.src)}" muted loop playsinline preload="metadata"></video>
+          <span class="g-play" aria-hidden="true">▶</span>
+        </figure>`;
+    }
+    if (it.type === "pdf") {
+      return `
+        <figure class="g-item g-pdf ${d}" data-idx="${i}">
+          <iframe src="${esc(it.src)}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" scrolling="no" title="${esc(it.label || "PDF")}" loading="lazy"></iframe>
+          <span class="g-pdf-label">📄 ${esc(it.label || "PDF")}</span>
+        </figure>`;
+    }
+    return `
+      <figure class="g-item ${d}" data-idx="${i}">
+        <img src="${esc(it.src)}" alt="" loading="lazy" />
+      </figure>`;
+  }
+
   function render() {
     const c = CONTENT[lang];
 
@@ -140,25 +163,12 @@
         </div>
       </section>
 
-      <!-- PORTFOLIO -->
-      <section id="portfolio" class="wrap">
-        ${sectionHead("05", c.portfolio.title)}
-        <p class="portfolio-sub reveal">${esc(c.portfolio.subtitle)}</p>
-        <div class="pf-grid">
-          ${c.portfolio.slots
-            .map((p, i) => {
-              const body = `
-                <span class="pf-badge">${p.placeholder ? (lang === "zh" ? "预留展位" : "RESERVED") : "PROJECT"}</span>
-                <div class="pf-title">${esc(p.title)}</div>
-                <div class="pf-desc">${esc(p.desc)}</div>
-                <div class="pf-tags">${p.tags.map((t) => `<span class="pf-tag">${esc(t)}</span>`).join("")}</div>`;
-              const inner = p.placeholder ? `<div class="pf-thumb">🏟️</div>${body}` : body;
-              const cls = `pf-card reveal reveal-d${i + 1}${p.placeholder ? " placeholder" : ""}`;
-              return p.link
-                ? `<a class="${cls}" href="${esc(p.link)}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">${inner}</a>`
-                : `<div class="${cls}">${inner}</div>`;
-            })
-            .join("")}
+      <!-- GALLERY -->
+      <section id="gallery" class="wrap">
+        ${sectionHead("05", c.gallery.title)}
+        <p class="portfolio-sub reveal">${esc(c.gallery.subtitle)}</p>
+        <div class="gallery-grid">
+          ${c.gallery.items.map((it, i) => galleryItem(it, i)).join("")}
         </div>
       </section>
 
@@ -186,6 +196,70 @@
     document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
     observeReveals();
     animateStats();
+    bindGallery(c.gallery.items);
+  }
+
+  /* ---------------- Gallery：灯箱 + 视频悬停播放 ---------------- */
+
+  // 灯箱只创建一次，挂在 body 上，语言切换重渲染时不受影响
+  const lightbox = document.createElement("div");
+  lightbox.className = "lightbox";
+  lightbox.innerHTML = `
+    <button class="lb-close" aria-label="Close">✕</button>
+    <button class="lb-arrow lb-prev" aria-label="Previous">‹</button>
+    <div class="lb-stage"></div>
+    <button class="lb-arrow lb-next" aria-label="Next">›</button>`;
+  document.body.appendChild(lightbox);
+
+  let lbItems = [];
+  let lbIndex = 0;
+
+  function lbShow(i) {
+    lbIndex = (i + lbItems.length) % lbItems.length;
+    const it = lbItems[lbIndex];
+    const stage = lightbox.querySelector(".lb-stage");
+    if (it.type === "video") {
+      stage.innerHTML = `<video src="${esc(it.src)}" controls autoplay playsinline></video>`;
+    } else if (it.type === "pdf") {
+      stage.innerHTML = `<iframe class="lb-pdf" src="${esc(it.src)}#toolbar=1&view=FitH" title="${esc(it.label || "PDF")}"></iframe>`;
+    } else {
+      stage.innerHTML = `<img src="${esc(it.src)}" alt="" />`;
+    }
+  }
+
+  function lbOpen(i) {
+    lbShow(i);
+    lightbox.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function lbClose() {
+    lightbox.classList.remove("open");
+    lightbox.querySelector(".lb-stage").innerHTML = ""; // 停止视频/PDF
+    document.body.style.overflow = "";
+  }
+
+  lightbox.querySelector(".lb-close").addEventListener("click", lbClose);
+  lightbox.querySelector(".lb-prev").addEventListener("click", (e) => { e.stopPropagation(); lbShow(lbIndex - 1); });
+  lightbox.querySelector(".lb-next").addEventListener("click", (e) => { e.stopPropagation(); lbShow(lbIndex + 1); });
+  lightbox.addEventListener("click", (e) => { if (e.target === lightbox) lbClose(); });
+  addEventListener("keydown", (e) => {
+    if (!lightbox.classList.contains("open")) return;
+    if (e.key === "Escape") lbClose();
+    if (e.key === "ArrowLeft") lbShow(lbIndex - 1);
+    if (e.key === "ArrowRight") lbShow(lbIndex + 1);
+  });
+
+  function bindGallery(items) {
+    lbItems = items;
+    document.querySelectorAll(".g-item").forEach((fig) => {
+      const idx = +fig.dataset.idx;
+      fig.addEventListener("click", () => lbOpen(idx));
+      const v = fig.querySelector("video");
+      if (v) {
+        fig.addEventListener("mouseenter", () => v.play().catch(() => {}));
+        fig.addEventListener("mouseleave", () => v.pause());
+      }
+    });
   }
 
   /* ---------------- 语言切换 ---------------- */

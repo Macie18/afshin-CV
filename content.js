@@ -5,9 +5,8 @@
  * HOW TO UPDATE LATER:
  *  - English (en) text is verbatim from the CV — do not reword.
  *  - Chinese (zh) is the translation shown after the toggle.
- *  - To add a portfolio project: copy one object inside
- *    `portfolio.slots` and fill title / desc / tags / link.
- *    Set `placeholder: false` to render it as a real project.
+ *  - To add a gallery piece: copy one object inside `gallery.items`
+ *    (type: image / video / pdf, src under assets/).
  * ============================================================ */
 
 const CONTENT = {
@@ -18,7 +17,7 @@ const CONTENT = {
       experience: "Experience",
       education: "Education",
       certifications: "Certifications",
-      portfolio: "Portfolio",
+      portfolio: "Gallery",
       contact: "Contact",
     },
     hero: {
@@ -34,9 +33,7 @@ const CONTENT = {
       scrollHint: "Scroll to explore",
       stats: [
         { num: 12, suffix: "+", label: "Years of Experience" },
-        { num: 5, suffix: "", label: "Schools & Clubs" },
-        { num: 24, suffix: "", label: "Certifications & Recognitions" },
-        { num: 12, suffix: "", prefix: "G1–G", label: "Grade Range Taught", static: "G1–G12" },
+        { num: 12, suffix: "", prefix: "K1–K", label: "Grade Range Taught", static: "K1–K12" },
       ],
     },
     marquee: [
@@ -47,7 +44,7 @@ const CONTENT = {
     summary: {
       title: "Professional Summary",
       items: [
-        "PE & Athletics HOD (Director) with 12 years of experience across leading and teaching in public, bilingual, and international school settings (G1–G12), including years based in China.",
+        "PE & Athletics HOD (Director) with 12 years of experience across leading and teaching in public, bilingual, and international school settings (K1–K12), including years based in China.",
         "Master's and Bachelor's degrees in Physical Education (PE) and Sports Science.",
         "Core expertise includes department operations; curriculum planning (integrating IB, Chinese, and IGCSE frameworks); sports event organization; sports ECA management; team leadership; multi-sport instruction (athletics, volleyball, handball, frisbee, etc.); adventure education; teaching IB/IGCSE Sports Science; early years motor development; youth strength and conditioning; and leading workshops for coaches and PE teachers.",
         "Former college runner and youth conditioning coach.",
@@ -126,31 +123,21 @@ const CONTENT = {
         { t: "Emergency Rescue Short Course (80 hrs)", d: "26 Feb – 10 Jun 2010, Iran" },
       ],
     },
-    portfolio: {
-      title: "Portfolio",
-      subtitle: "Selected projects & showcases — more pieces are on the way.",
-      slots: [
-        {
-          placeholder: true,
-          title: "Project Slot 01",
-          desc: "Portfolio piece coming soon — this space is reserved for an upcoming project showcase.",
-          tags: ["Coming Soon"],
-          link: "",
-        },
-        {
-          placeholder: true,
-          title: "Project Slot 02",
-          desc: "Portfolio piece coming soon — this space is reserved for an upcoming project showcase.",
-          tags: ["Coming Soon"],
-          link: "",
-        },
-        {
-          placeholder: true,
-          title: "Project Slot 03",
-          desc: "Portfolio piece coming soon — this space is reserved for an upcoming project showcase.",
-          tags: ["Coming Soon"],
-          link: "",
-        },
+    gallery: {
+      title: "Gallery",
+      subtitle: "Moments from teaching, coaching, and school events.",
+      /* 顺序即列填充顺序（3 列瀑布流）：竖图与横图/视频交错，视觉重量均衡 */
+      items: [
+        { type: "image", src: "assets/pic-1.jpg" },
+        { type: "video", src: "assets/video-1.mp4" },
+        { type: "image", src: "assets/pic-2.jpg" },
+        { type: "video", src: "assets/video-2.mp4" },
+        { type: "image", src: "assets/pic-3.jpg" },
+        { type: "image", src: "assets/pic-4.jpg" },
+        { type: "video", src: "assets/video-3.mp4" },
+        { type: "image", src: "assets/pic-5.jpg" },
+        { type: "video", src: "assets/video-4.mp4" },
+        { type: "pdf", src: "assets/G7_Student_Booklet.pdf", label: "G7 Student Booklet" },
       ],
     },
     contact: {
@@ -168,7 +155,7 @@ const CONTENT = {
       experience: "工作经历",
       education: "教育背景",
       certifications: "证书与荣誉",
-      portfolio: "作品集",
+      portfolio: "影像集锦",
       contact: "联系方式",
     },
     hero: {
@@ -184,9 +171,7 @@ const CONTENT = {
       scrollHint: "下滑探索",
       stats: [
         { num: 12, suffix: "+", label: "年执教经验" },
-        { num: 5, suffix: "", label: "所学校 / 俱乐部" },
-        { num: 24, suffix: "", label: "项证书与荣誉" },
-        { num: 12, suffix: "", prefix: "G1–G", label: "覆盖年级跨度", static: "G1–G12" },
+        { num: 12, suffix: "", prefix: "K1–K", label: "覆盖年级跨度", static: "K1–K12" },
       ],
     },
     marquee: [
@@ -197,7 +182,7 @@ const CONTENT = {
     summary: {
       title: "职业概述",
       items: [
-        "体育与田径学科主任（总监级），拥有 12 年公立、双语及国际学校（G1–G12）教学与管理经验，其中多年在中国执教。",
+        "体育与田径学科主任（总监级），拥有 12 年公立、双语及国际学校（K1–K12）教学与管理经验，其中多年在中国执教。",
         "持有体育教育（PE）与运动科学方向的硕士及学士学位。",
         "核心专长涵盖：部门运营管理；课程规划（融合 IB、中国国家课程与 IGCSE 体系）；体育赛事组织；体育课外活动（ECA）管理；团队领导；多运动项目教学（田径、排球、手球、飞盘等）；探险教育；IB/IGCSE 运动科学教学；幼儿动作发展；青少年力量与体能训练；以及面向教练员与体育教师的工作坊主持。",
         "曾任大学田径运动员及青少年体能教练。",
@@ -276,31 +261,20 @@ const CONTENT = {
         { t: "应急救援短期课程（80 学时）", d: "2010 年 2 月 26 日 – 6 月 10 日，伊朗" },
       ],
     },
-    portfolio: {
-      title: "作品集",
-      subtitle: "精选项目与成果展示——更多作品正在路上。",
-      slots: [
-        {
-          placeholder: true,
-          title: "项目展位 01",
-          desc: "作品即将上线——此展位为后续项目展示预留。",
-          tags: ["敬请期待"],
-          link: "",
-        },
-        {
-          placeholder: true,
-          title: "项目展位 02",
-          desc: "作品即将上线——此展位为后续项目展示预留。",
-          tags: ["敬请期待"],
-          link: "",
-        },
-        {
-          placeholder: true,
-          title: "项目展位 03",
-          desc: "作品即将上线——此展位为后续项目展示预留。",
-          tags: ["敬请期待"],
-          link: "",
-        },
+    gallery: {
+      title: "影像集锦",
+      subtitle: "教学、执教与校园活动的精彩瞬间。",
+      items: [
+        { type: "image", src: "assets/pic-1.jpg" },
+        { type: "video", src: "assets/video-1.mp4" },
+        { type: "image", src: "assets/pic-2.jpg" },
+        { type: "video", src: "assets/video-2.mp4" },
+        { type: "image", src: "assets/pic-3.jpg" },
+        { type: "image", src: "assets/pic-4.jpg" },
+        { type: "video", src: "assets/video-3.mp4" },
+        { type: "image", src: "assets/pic-5.jpg" },
+        { type: "video", src: "assets/video-4.mp4" },
+        { type: "pdf", src: "assets/G7_Student_Booklet.pdf", label: "G7 学生手册" },
       ],
     },
     contact: {
