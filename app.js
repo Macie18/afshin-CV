@@ -242,11 +242,23 @@
           <a class="lb-ext" href="${esc(it.src)}" target="_blank" rel="noopener">${openLabel}</a>
         </div>`;
     } else if (it.type === "link") {
+      /* 同源抓取本地镜像文章并注入，避免 iframe 在部分预览环境被拦截 */
       stage.innerHTML = `
         <div class="lb-doc">
-          <iframe class="lb-pdf" src="${esc(it.embed || it.href)}" title="${esc(it.title)}"></iframe>
+          <div class="lb-article"><p class="lb-loading">Loading…</p></div>
           <a class="lb-ext" href="${esc(it.href)}" target="_blank" rel="noopener">${openLabel}</a>
         </div>`;
+      const box = stage.querySelector(".lb-article");
+      fetch(encodeURI(it.embed || it.href))
+        .then((r) => { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then((html) => {
+          const doc = new DOMParser().parseFromString(html, "text/html");
+          box.innerHTML = "";
+          box.appendChild(doc.querySelector(".art") || doc.body);
+        })
+        .catch(() => {
+          box.innerHTML = `<iframe class="lb-pdf" src="${esc(it.embed || it.href)}" title="${esc(it.title)}"></iframe>`;
+        });
     } else {
       stage.innerHTML = `<img src="${esc(it.src)}" alt="" />`;
     }

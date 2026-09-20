@@ -380,6 +380,24 @@ section { padding: 110px 0 30px; position: relative; }
   width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
   max-width: 100%; max-height: none;
 }
+/* 公众号文章本地镜像注入 */
+.lb-article {
+  width: min(720px, 92vw); height: 78vh; overflow-y: auto; border-radius: 12px;
+  background: #fff; padding: 34px 30px 48px; color: #333;
+  font: 16px/1.9 -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+  animation: lbIn 0.35s var(--ease-out);
+}
+.lb-article h1 { font-size: 21px; line-height: 1.4; margin: 0 0 8px; color: #111; }
+.lb-article .meta { color: #999; font-size: 13px; margin-bottom: 26px; }
+.lb-article .meta a { color: #576b95; text-decoration: none; }
+.lb-article img {
+  max-width: 100% !important; height: auto !important; display: block;
+  margin: 10px auto; border-radius: 6px; max-height: none;
+}
+.lb-article p { margin: 14px 0; }
+.lb-article section { margin: 0; padding: 0; }
+.lb-article a { color: #576b95; }
+.lb-loading { color: #999; text-align: center; padding: 40px 0; }
 @keyframes lbIn { from { opacity: 0; transform: scale(0.94); } }
 .lb-close {
   position: absolute; top: 22px; right: 26px; z-index: 2;
