@@ -327,9 +327,11 @@ section { padding: 110px 0 30px; position: relative; }
 }
 .g-video:hover .g-play { opacity: 0; transform: scale(1.6); }
 .g-pdf { cursor: zoom-in; }
-.g-pdf iframe {
-  width: 100%; height: 420px; display: block; border: 0; pointer-events: none;
-  background: #fff;
+.g-badge {
+  position: absolute; top: 12px; left: 12px; padding: 4px 12px; border-radius: 999px;
+  font-size: 11.5px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink);
+  background: rgba(12, 18, 34, 0.82); border: 1px solid var(--card-border);
+  backdrop-filter: blur(8px); pointer-events: none;
 }
 .g-pdf-label {
   position: absolute; left: 12px; bottom: 12px; padding: 6px 14px; border-radius: 999px;
@@ -337,6 +339,19 @@ section { padding: 110px 0 30px; position: relative; }
   background: rgba(12, 18, 34, 0.82); border: 1px solid var(--card-border);
   backdrop-filter: blur(8px); pointer-events: none;
 }
+.g-link-title {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 34px 14px 12px;
+  font-size: 13.5px; font-weight: 700; line-height: 1.45; color: #fff; pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(4, 6, 12, 0.88));
+}
+.lb-doc { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.lb-ext {
+  display: inline-flex; align-items: center; gap: 6px; padding: 9px 20px; border-radius: 999px;
+  font-size: 13.5px; font-weight: 700; color: var(--ink); text-decoration: none;
+  background: rgba(12, 18, 34, 0.8); border: 1px solid var(--card-border);
+  transition: border-color 0.3s, transform 0.3s var(--ease-spring);
+}
+.lb-ext:hover { border-color: var(--orange); transform: translateY(-2px); }
 
 /* ---------------- 灯箱 ---------------- */
 .lightbox {
@@ -352,7 +367,7 @@ section { padding: 110px 0 30px; position: relative; }
   animation: lbIn 0.35s var(--ease-out);
 }
 .lb-stage .lb-pdf {
-  width: min(1000px, 92vw); height: 86vh; border: 0; border-radius: 12px; background: #fff;
+  width: min(1000px, 92vw); height: 78vh; border: 0; border-radius: 12px; background: #fff;
   animation: lbIn 0.35s var(--ease-out);
 }
 @keyframes lbIn { from { opacity: 0; transform: scale(0.94); } }
@@ -395,7 +410,6 @@ footer { padding: 46px 0 40px; text-align: center; color: var(--ink-faint); font
   #lang-toggle { top: 14px; right: 14px; }
   .marquee-band { transform: rotate(0); }
   .gallery-grid { columns: 1; }
-  .g-pdf iframe { height: 380px; }
   .lb-arrow { width: 42px; height: 42px; font-size: 20px; }
 }
 

@@ -33,7 +33,7 @@ const CONTENT = {
       scrollHint: "Scroll to explore",
       stats: [
         { num: 12, suffix: "+", label: "Years of Experience" },
-        { num: 12, suffix: "", prefix: "K1–K", label: "Grade Range Taught", static: "K1–K12" },
+        { num: 12, suffix: "", prefix: "K1–G", label: "Grade Range Taught", static: "K1–G12" },
       ],
     },
     marquee: [
@@ -44,7 +44,7 @@ const CONTENT = {
     summary: {
       title: "Professional Summary",
       items: [
-        "PE & Athletics HOD (Director) with 12 years of experience across leading and teaching in public, bilingual, and international school settings (K1–K12), including years based in China.",
+        "PE & Athletics HOD (Director) with 12 years of experience across leading and teaching in public, bilingual, and international school settings (K1–G12), including years based in China.",
         "Master's and Bachelor's degrees in Physical Education (PE) and Sports Science.",
         "Core expertise includes department operations; curriculum planning (integrating IB, Chinese, and IGCSE frameworks); sports event organization; sports ECA management; team leadership; multi-sport instruction (athletics, volleyball, handball, frisbee, etc.); adventure education; teaching IB/IGCSE Sports Science; early years motor development; youth strength and conditioning; and leading workshops for coaches and PE teachers.",
         "Former college runner and youth conditioning coach.",
@@ -132,12 +132,24 @@ const CONTENT = {
         { type: "video", src: "assets/video-1.mp4" },
         { type: "image", src: "assets/pic-2.jpg" },
         { type: "video", src: "assets/video-2.mp4" },
+        {
+          type: "link",
+          href: "https://mp.weixin.qq.com/s/AG7DUBQkUsx-gy7pXQp-mg",
+          cover: "assets/wx-sports-day-cover.jpg",
+          badge: "WeChat Article",
+          title: "Autumn House Sports Day 2025 — WUIS Official Account",
+        },
         { type: "image", src: "assets/pic-3.jpg" },
         { type: "image", src: "assets/pic-4.jpg" },
         { type: "video", src: "assets/video-3.mp4" },
         { type: "image", src: "assets/pic-5.jpg" },
         { type: "video", src: "assets/video-4.mp4" },
-        { type: "pdf", src: "assets/G7_Student_Booklet.pdf", label: "G7 Student Booklet" },
+        {
+          type: "pdf",
+          src: "assets/G7_Student_Booklet.pdf",
+          cover: "assets/G7_Student_Booklet-cover.jpg",
+          label: "G7 Student Booklet",
+        },
       ],
     },
     contact: {
@@ -171,7 +183,7 @@ const CONTENT = {
       scrollHint: "下滑探索",
       stats: [
         { num: 12, suffix: "+", label: "年执教经验" },
-        { num: 12, suffix: "", prefix: "K1–K", label: "覆盖年级跨度", static: "K1–K12" },
+        { num: 12, suffix: "", prefix: "K1–G", label: "覆盖年级跨度", static: "K1–G12" },
       ],
     },
     marquee: [
@@ -182,7 +194,7 @@ const CONTENT = {
     summary: {
       title: "职业概述",
       items: [
-        "体育与田径学科主任（总监级），拥有 12 年公立、双语及国际学校（K1–K12）教学与管理经验，其中多年在中国执教。",
+        "体育与田径学科主任（总监级），拥有 12 年公立、双语及国际学校（K1–G12）教学与管理经验，其中多年在中国执教。",
         "持有体育教育（PE）与运动科学方向的硕士及学士学位。",
         "核心专长涵盖：部门运营管理；课程规划（融合 IB、中国国家课程与 IGCSE 体系）；体育赛事组织；体育课外活动（ECA）管理；团队领导；多运动项目教学（田径、排球、手球、飞盘等）；探险教育；IB/IGCSE 运动科学教学；幼儿动作发展；青少年力量与体能训练；以及面向教练员与体育教师的工作坊主持。",
         "曾任大学田径运动员及青少年体能教练。",
@@ -269,12 +281,19 @@ const CONTENT = {
         { type: "video", src: "assets/video-1.mp4" },
         { type: "image", src: "assets/pic-2.jpg" },
         { type: "video", src: "assets/video-2.mp4" },
+        {
+          type: "link",
+          href: "https://mp.weixin.qq.com/s/AG7DUBQkUsx-gy7pXQp-mg",
+          cover: "assets/wx-sports-day-cover.jpg",
+          badge: "公众号文章",
+          title: "挥洒汗水，凝聚欢笑｜中学部秋季学院运动会圆满落幕 — 无锡协和",
+        },
         { type: "image", src: "assets/pic-3.jpg" },
         { type: "image", src: "assets/pic-4.jpg" },
         { type: "video", src: "assets/video-3.mp4" },
         { type: "image", src: "assets/pic-5.jpg" },
         { type: "video", src: "assets/video-4.mp4" },
-        { type: "pdf", src: "assets/G7_Student_Booklet.pdf", label: "G7 学生手册" },
+        { type: "pdf", src: "assets/G7_Student_Booklet.pdf", cover: "assets/G7_Student_Booklet-cover.jpg", label: "G7 学生手册" },
       ],
     },
     contact: {

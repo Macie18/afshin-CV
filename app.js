@@ -37,8 +37,17 @@
     if (it.type === "pdf") {
       return `
         <figure class="g-item g-pdf ${d}" data-idx="${i}">
-          <iframe src="${esc(it.src)}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" scrolling="no" title="${esc(it.label || "PDF")}" loading="lazy"></iframe>
-          <span class="g-pdf-label">📄 ${esc(it.label || "PDF")}</span>
+          <img src="${esc(it.cover)}" alt="${esc(it.label || "PDF")}" loading="lazy" />
+          <span class="g-badge">📄 PDF</span>
+          <span class="g-pdf-label">${esc(it.label || "PDF")}</span>
+        </figure>`;
+    }
+    if (it.type === "link") {
+      return `
+        <figure class="g-item g-link ${d}" data-idx="${i}">
+          <img src="${esc(it.cover)}" alt="${esc(it.title)}" loading="lazy" />
+          <span class="g-badge">📰 ${esc(it.badge || "Link")}</span>
+          <span class="g-link-title">${esc(it.title)}</span>
         </figure>`;
     }
     return `
@@ -218,10 +227,21 @@
     lbIndex = (i + lbItems.length) % lbItems.length;
     const it = lbItems[lbIndex];
     const stage = lightbox.querySelector(".lb-stage");
+    const openLabel = lang === "zh" ? "在新窗口打开 ↗" : "Open in new tab ↗";
     if (it.type === "video") {
       stage.innerHTML = `<video src="${esc(it.src)}" controls autoplay playsinline></video>`;
     } else if (it.type === "pdf") {
-      stage.innerHTML = `<iframe class="lb-pdf" src="${esc(it.src)}#toolbar=1&view=FitH" title="${esc(it.label || "PDF")}"></iframe>`;
+      stage.innerHTML = `
+        <div class="lb-doc">
+          <iframe class="lb-pdf" src="${esc(it.src)}#toolbar=1&view=FitH" title="${esc(it.label || "PDF")}"></iframe>
+          <a class="lb-ext" href="${esc(it.src)}" target="_blank" rel="noopener">${openLabel}</a>
+        </div>`;
+    } else if (it.type === "link") {
+      stage.innerHTML = `
+        <div class="lb-doc">
+          <iframe class="lb-pdf" src="${esc(it.href)}" title="${esc(it.title)}"></iframe>
+          <a class="lb-ext" href="${esc(it.href)}" target="_blank" rel="noopener">${openLabel}</a>
+        </div>`;
     } else {
       stage.innerHTML = `<img src="${esc(it.src)}" alt="" />`;
     }
