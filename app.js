@@ -231,15 +231,20 @@
     if (it.type === "video") {
       stage.innerHTML = `<video src="${esc(it.src)}" controls autoplay playsinline></video>`;
     } else if (it.type === "pdf") {
+      /* PDF 逐页渲染为图片（灯箱内滚动阅读），任何环境都不依赖浏览器 PDF 插件 */
+      const imgs = Array.from({ length: it.pages }, (_, k) => {
+        const p = `${it.pagesDir}/page-${String(k + 1).padStart(2, "0")}.jpg`;
+        return `<img src="${p}" loading="lazy" alt="${esc(it.label || "PDF")} p.${k + 1}" />`;
+      }).join("");
       stage.innerHTML = `
         <div class="lb-doc">
-          <iframe class="lb-pdf" src="${esc(it.src)}#toolbar=1&view=FitH" title="${esc(it.label || "PDF")}"></iframe>
+          <div class="lb-pages">${imgs}</div>
           <a class="lb-ext" href="${esc(it.src)}" target="_blank" rel="noopener">${openLabel}</a>
         </div>`;
     } else if (it.type === "link") {
       stage.innerHTML = `
         <div class="lb-doc">
-          <iframe class="lb-pdf" src="${esc(it.href)}" title="${esc(it.title)}"></iframe>
+          <iframe class="lb-pdf" src="${esc(it.embed || it.href)}" title="${esc(it.title)}"></iframe>
           <a class="lb-ext" href="${esc(it.href)}" target="_blank" rel="noopener">${openLabel}</a>
         </div>`;
     } else {

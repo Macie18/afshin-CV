@@ -147,6 +147,8 @@ const CONTENT = {
         {
           type: "pdf",
           src: "assets/G7_Student_Booklet.pdf",
+          pagesDir: "assets/booklet",
+          pages: 47,
           cover: "assets/G7_Student_Booklet-cover.jpg",
           label: "G7 Student Booklet",
         },
@@ -284,6 +286,7 @@ const CONTENT = {
         {
           type: "link",
           href: "https://mp.weixin.qq.com/s/AG7DUBQkUsx-gy7pXQp-mg",
+          embed: "assets/wx-article.html",
           cover: "assets/wx-sports-day-cover.jpg",
           badge: "公众号文章",
           title: "挥洒汗水，凝聚欢笑｜中学部秋季学院运动会圆满落幕 — 无锡协和",
@@ -293,7 +296,7 @@ const CONTENT = {
         { type: "video", src: "assets/video-3.mp4" },
         { type: "image", src: "assets/pic-5.jpg" },
         { type: "video", src: "assets/video-4.mp4" },
-        { type: "pdf", src: "assets/G7_Student_Booklet.pdf", cover: "assets/G7_Student_Booklet-cover.jpg", label: "G7 学生手册" },
+        { type: "pdf", src: "assets/G7_Student_Booklet.pdf", pagesDir: "assets/booklet", pages: 47, cover: "assets/G7_Student_Booklet-cover.jpg", label: "G7 学生手册" },
       ],
     },
     contact: {
