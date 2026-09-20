@@ -43,12 +43,13 @@
         </figure>`;
     }
     if (it.type === "link") {
+      /* 外链卡片（如公众号文章）：不开灯箱，点击直接新窗口跳转，零故障点 */
       return `
-        <figure class="g-item g-link ${d}" data-idx="${i}">
+        <a class="g-item g-link ${d}" href="${esc(it.href)}" target="_blank" rel="noopener">
           <img src="${esc(it.cover)}" alt="${esc(it.title)}" loading="lazy" />
           <span class="g-badge">📰 ${esc(it.badge || "Link")}</span>
           <span class="g-link-title">${esc(it.title)}</span>
-        </figure>`;
+        </a>`;
     }
     return `
       <figure class="g-item ${d}" data-idx="${i}">
@@ -289,6 +290,7 @@
   function bindGallery(items) {
     lbItems = items;
     document.querySelectorAll(".g-item").forEach((fig) => {
+      if (fig.classList.contains("g-link")) return; // 外链卡片：原生跳转，不进灯箱
       const idx = +fig.dataset.idx;
       fig.addEventListener("click", () => lbOpen(idx));
       const v = fig.querySelector("video");
