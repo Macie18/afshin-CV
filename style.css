@@ -1,16 +1,15 @@
 :root {
-  --paper: #f4f6f8;
-  --paper-deep: #e6ebf2;
-  --white: #ffffff;
-  --ink: #162033;
-  --muted: #687487;
-  --school-blue: #1c4897;
-  --forest: var(--school-blue);
-  --forest-deep: #0c2141;
-  --forest-soft: #183d76;
-  --gold: #4e7fc2;
-  --gold-bright: #c9daef;
-  --line: rgba(22, 32, 51, 0.15);
+  --paper: #f4f1e9;
+  --paper-deep: #e9e3d7;
+  --white: #fffdf8;
+  --ink: #171b19;
+  --muted: #66706c;
+  --forest: #17332e;
+  --forest-deep: #0d2420;
+  --forest-soft: #23473f;
+  --gold: #c9a45b;
+  --gold-bright: #e0bc70;
+  --line: rgba(23, 27, 25, 0.16);
   --light-line: rgba(255, 255, 255, 0.16);
   --serif: Georgia, "Times New Roman", "Songti SC", "STSong", serif;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
@@ -65,8 +64,8 @@ button {
 }
 
 ::selection {
-  background: #c9daef;
-  color: #0c2141;
+  background: var(--gold);
+  color: var(--forest-deep);
 }
 
 .page-shell {
@@ -100,8 +99,8 @@ button {
   grid-template-columns: minmax(250px, 1fr) auto minmax(250px, 1fr);
   align-items: center;
   gap: 28px;
-  background: rgba(255, 255, 255, 0.96);
-  border-bottom: 1px solid rgba(22, 32, 51, 0.1);
+  background: rgba(255, 253, 248, 0.96);
+  border-bottom: 1px solid rgba(23, 27, 25, 0.1);
   backdrop-filter: blur(16px);
 }
 
@@ -119,8 +118,8 @@ button {
   flex: 0 0 auto;
   display: grid;
   place-items: center;
-  background: var(--school-blue);
-  color: #fff;
+  background: var(--forest);
+  color: var(--gold-bright);
   font: 400 21px/1 var(--serif);
   letter-spacing: 0.03em;
 }
@@ -154,7 +153,7 @@ button {
 .desktop-nav a {
   position: relative;
   padding-block: 40px;
-  color: var(--ink);
+  color: #383e3b;
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
@@ -198,7 +197,7 @@ button {
 }
 
 .language-toggle span {
-  color: #9099a8;
+  color: #999c9a;
 }
 
 .language-toggle span.active {
@@ -214,7 +213,7 @@ button {
 
 .header-contact {
   padding: 13px 20px;
-  border: 1px solid var(--school-blue);
+  border: 1px solid var(--gold);
   color: var(--forest);
   font-size: 12px;
   font-weight: 700;
@@ -224,7 +223,7 @@ button {
 }
 
 .header-contact:hover {
-  background: var(--school-blue);
+  background: var(--forest);
   color: var(--white);
 }
 
@@ -246,7 +245,7 @@ button {
   position: relative;
   min-height: 680px;
   overflow: hidden;
-  background: #d8dee8;
+  background: #c7c1b6;
 }
 
 .hero-photo img {
@@ -266,8 +265,8 @@ button {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(8, 28, 58, 0.02) 40%, rgba(8, 28, 58, 0.68) 100%),
-    linear-gradient(90deg, transparent 75%, rgba(12, 33, 65, 0.18));
+    linear-gradient(180deg, rgba(8, 27, 22, 0.04) 40%, rgba(8, 27, 22, 0.7) 100%),
+    linear-gradient(90deg, transparent 75%, rgba(13, 36, 32, 0.18));
 }
 
 .hero-photo-label {
@@ -308,7 +307,7 @@ button {
 }
 
 .eyebrow.green {
-  color: var(--school-blue);
+  color: #2f6c5e;
 }
 
 .eyebrow.gold {
@@ -390,13 +389,13 @@ button {
 }
 
 .button-gold {
-  background: var(--school-blue);
-  color: #fff;
+  background: var(--gold);
+  color: var(--forest-deep);
   transition: transform 0.25s, background 0.25s;
 }
 
 .button-gold:hover {
-  background: #265db2;
+  background: var(--gold-bright);
   transform: translateY(-2px);
 }
 
@@ -498,8 +497,8 @@ button {
   overflow: hidden;
   margin-top: 58px;
   padding: 20px 0;
-  background: var(--school-blue);
-  color: #fff;
+  background: var(--gold);
+  color: var(--forest-deep);
 }
 
 .recognition-track {
@@ -581,24 +580,24 @@ button {
   top: 18px;
   right: 18px;
   padding: 9px 12px;
-  background: rgba(12, 33, 65, 0.92);
+  background: rgba(13, 36, 32, 0.9);
   color: rgba(255, 255, 255, 0.82);
   font-size: 9px;
   font-weight: 750;
   letter-spacing: 0.17em;
 }
 
-.about-visual .about-note {
+.about-visual blockquote {
   position: absolute;
   right: 0;
   bottom: 0;
   width: min(78%, 540px);
   padding: 34px 40px;
   background: var(--white);
-  border-left: 4px solid var(--school-blue);
-  box-shadow: 0 24px 70px rgba(18, 34, 61, 0.14);
-  color: var(--ink);
-  font: 400 clamp(20px, 2.2vw, 30px)/1.4 var(--serif);
+  border-left: 4px solid var(--gold);
+  box-shadow: 0 24px 70px rgba(20, 28, 25, 0.13);
+  color: var(--forest);
+  font: 400 clamp(22px, 2.5vw, 34px)/1.35 var(--serif);
 }
 
 .expertise {
@@ -704,7 +703,7 @@ button {
   bottom: 0;
   left: -1px;
   width: 3px;
-  background: var(--school-blue);
+  background: var(--gold);
   content: "";
 }
 
@@ -757,7 +756,7 @@ button {
 .perspective-image::after {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent 70%, rgba(12, 33, 65, 0.28));
+  background: linear-gradient(90deg, transparent 70%, rgba(13, 36, 32, 0.28));
   content: "";
 }
 
@@ -775,7 +774,7 @@ button {
   flex-direction: column;
   justify-content: center;
   background:
-    radial-gradient(circle at 90% 20%, rgba(78, 127, 194, 0.18), transparent 34%),
+    radial-gradient(circle at 90% 20%, rgba(201, 164, 91, 0.1), transparent 34%),
     var(--forest-deep);
 }
 
@@ -804,7 +803,7 @@ button {
   overflow: hidden;
   border: 0;
   background: var(--white);
-  box-shadow: 0 12px 36px rgba(18, 34, 61, 0.08);
+  box-shadow: 0 12px 36px rgba(20, 28, 25, 0.07);
   cursor: pointer;
   text-align: left;
   text-decoration: none;
@@ -823,7 +822,7 @@ button {
   position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: #dfe4eb;
+  background: #dcd8ce;
 }
 
 .gallery-card:nth-child(1) .gallery-media,
@@ -872,7 +871,7 @@ button {
   place-items: center;
   border: 1px solid rgba(255, 255, 255, 0.72);
   border-radius: 50%;
-  background: rgba(12, 33, 65, 0.78);
+  background: rgba(13, 36, 32, 0.7);
   color: #fff;
   font-size: 12px;
   transform: translate(-50%, -50%);
@@ -919,7 +918,7 @@ button {
   top: 18px;
   right: 18px;
   padding: 8px 10px;
-  background: rgba(12, 33, 65, 0.92);
+  background: rgba(13, 36, 32, 0.9);
   color: #fff;
   font-size: 9px;
   font-weight: 750;
@@ -1027,7 +1026,7 @@ button {
   margin-block: clamp(70px, 9vw, 130px);
   padding: clamp(52px, 7vw, 100px);
   background:
-    radial-gradient(circle at 0 100%, rgba(78, 127, 194, 0.18), transparent 35%),
+    radial-gradient(circle at 0 100%, rgba(201, 164, 91, 0.12), transparent 35%),
     var(--forest);
   color: var(--white);
 }
@@ -1128,7 +1127,7 @@ button {
   display: grid;
   place-items: center;
   padding: 60px;
-  background: rgba(4, 17, 38, 0.97);
+  background: rgba(5, 18, 15, 0.96);
   opacity: 0;
   transition: opacity 0.22s;
 }
@@ -1543,7 +1542,7 @@ button {
     object-position: 58% center;
   }
 
-  .about-visual .about-note {
+  .about-visual blockquote {
     width: 92%;
     padding: 27px;
     font-size: 23px;
